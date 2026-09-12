@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const questions = await getCollection('interview');
+// Group by category
+const grouped = questions.reduce((acc, curr) => {
+  const cat = curr.data.category || 'General';
+  if (!acc[cat]) acc[cat] = [];
+  acc[cat].push(curr);
+  return acc;
+}, {} as Record<string, typeof questions>);
+---
+<BaseLayout title="Salesforce Interview Hub | Imran Pathan">
+  <div class="container section">
+    <div class="hub-header">
+      <h1>Salesforce Interview Hub</h1>
+      <p class="subtitle">Practical Salesforce interview questions, real-world scenarios, and architecture discussions.</p>
+    </div>
+    
+    <div class="categories">
+      {Object.entries(grouped).map(([category, items]) => (
+        <div class="category-section">
+          <h2>{category}</h2>
+          <div class="questions-list">
+            {items.map(item => (
+              <a href={`/interview/${item.id}`} class="question-card">
+                <div class="q-header">
+                  <h3>{item.data.title}</h3>
+                  {item.data.difficulty && <span class={`badge difficulty-${item.data.difficulty.toLowerCase()}`}>{item.data.difficulty}</span>}
+                </div>
+                <div class="tags">
+                  {item.data.tags?.map(tag => (
+                    <span class="badge">{tag}</span>
+                  ))}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .hub-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+  }
+  
+  .category-section {
+    margin-bottom: 3rem;
+  }
+  
+  .category-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .questions-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .question-card {
+    display: block;
+    padding: 1.25rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: inherit;
+    transition: transform 0.2s ease;
+  }
+  
+  .question-card:hover {
+    text-decoration: none;
+    border-color: var(--accent-color);
+    transform: translateX(4px);
+  }
+  
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .q-header h3 {
+    font-size: 1.125rem;
+    margin: 0;
+    color: var(--text-color);
+  }
+  
+  .question-card:hover .q-header h3 {
+    color: var(--accent-color);
+  }
+  
+  .difficulty-beginner { background-color: #dcfce7; color: #166534; }
+  .difficulty-intermediate { background-color: #fef08a; color: #854d0e; }
+  .difficulty-advanced { background-color: #ffedd5; color: #9a3412; }
+  .difficulty-architect { background-color: #fee2e2; color: #991b1b; }
+  
+  [data-theme="dark"] .difficulty-beginner { background-color: #14532d; color: #bbf7d0; }
+  [data-theme="dark"] .difficulty-intermediate { background-color: #713f12; color: #fef08a; }
+  [data-theme="dark"] .difficulty-advanced { background-color: #7c2d12; color: #fed7aa; }
+  [data-theme="dark"] .difficulty-architect { background-color: #7f1d1d; color: #fecaca; }
+</style>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = await getCollection('resources');
+articles.sort((a, b) => new Date(b.data.date || 0).valueOf() - new Date(a.data.date || 0).valueOf());
+---
+<BaseLayout title="Developer Resources | Imran Pathan">
+  <div class="container section">
+    <div class="hub-header">
+      <h1>Developer Resources</h1>
+      <p class="subtitle">Guides, tools, and productivity tips for developers.</p>
+    </div>
+    
+    <div class="articles-grid">
+      {articles.map(article => (
+        <a href={`/resources/${article.id}`} class="article-card">
+          <h2>{article.data.title}</h2>
+          <p>{article.data.description}</p>
+          <div class="meta">
+            {article.data.date && <time>{new Date(article.data.date).toLocaleDateString()}</time>}
+            <div class="tags">
+              {article.data.tags?.slice(0, 3).map(tag => (
+                <span class="badge">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .section { padding: 2rem 1.5rem; }
+  .hub-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; }
+  .subtitle { font-size: 1.25rem; color: var(--text-muted); }
+  .articles-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  .article-card { display: block; padding: 1.5rem; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; color: inherit; }
+  .article-card:hover { text-decoration: none; border-color: var(--accent-color); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .article-card h2 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--accent-color); }
+  .article-card p { color: var(--text-muted); margin-bottom: 1rem; }
+  .meta { display: flex; justify-content: space-between; align-items: center; }
+  time { font-size: 0.875rem; color: var(--text-muted); }
+</style>

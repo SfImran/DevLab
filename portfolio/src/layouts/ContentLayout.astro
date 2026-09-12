@@ -1,0 +1,83 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    date?: string;
+    tags?: string[];
+  }
+}
+
+const { frontmatter } = Astro.props;
+---
+<BaseLayout title={`${frontmatter.title} | Imran Pathan`} description={frontmatter.description}>
+  <article class="container markdown-body">
+    <div class="content-header">
+      <h1>{frontmatter.title}</h1>
+      {frontmatter.description && <p class="description">{frontmatter.description}</p>}
+      
+      <div class="meta">
+        {frontmatter.date && <time datetime={frontmatter.date}>{new Date(frontmatter.date).toLocaleDateString()}</time>}
+        
+        {frontmatter.tags && frontmatter.tags.length > 0 && (
+          <div class="tags">
+            {frontmatter.tags.map(tag => (
+              <span class="badge">{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+    
+    <div class="content">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .markdown-body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  
+  .content-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .description {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+  }
+  
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .meta {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  
+  time {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+  
+  .content {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+</style>

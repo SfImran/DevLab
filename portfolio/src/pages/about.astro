@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="About Me | Imran Pathan">
+  <div class="container section">
+    <div class="about-header">
+      <h1>About Me</h1>
+      <p class="subtitle">Salesforce Developer & Full-Stack Engineer</p>
+    </div>
+    
+    <div class="about-content">
+      <div class="prose">
+        <p>
+          I'm Imran Pathan, a Salesforce Developer and software engineer focused on building practical solutions around Salesforce, integrations, full-stack applications, and developer productivity.
+        </p>
+        <p>
+          Over the years, I've worked extensively with Apex, Lightning Web Components, Salesforce automation, APIs, integrations, CI/CD, and Salesforce development tooling.
+        </p>
+        <p>
+          I'm currently expanding my engineering depth into Java, Spring Boot, cloud platforms, data systems, system design, AI agents, and modern developer tooling.
+        </p>
+        <p>
+          My long-term goal is to grow into a Salesforce Solution Architect / Technical Lead while continuing to build products and tools that solve real developer problems.
+        </p>
+        <p>
+          I also enjoy documenting technical concepts and creating practical learning resources for other developers.
+        </p>
+      </div>
+      
+      <div class="philosophy">
+        <h2>How I Think About Engineering</h2>
+        <ul class="principles">
+          <li>Prefer simple solutions over unnecessary complexity.</li>
+          <li>Understand trade-offs before choosing an architecture.</li>
+          <li>Design for failure, not only the happy path.</li>
+          <li>Automate repetitive developer work.</li>
+          <li>Optimize based on evidence rather than assumptions.</li>
+          <li>Treat security and scalability as design concerns.</li>
+          <li>Build tools that solve real problems.</li>
+          <li>Share knowledge through practical examples.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 2rem 1.5rem;
+    max-width: 800px;
+  }
+  
+  .about-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+  }
+  
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .prose p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .philosophy h2 {
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+  }
+  
+  .principles {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .principles li {
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 4px;
+    font-weight: 500;
+  }
+</style>

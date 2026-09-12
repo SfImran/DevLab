@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+
+const products = [
+  {
+    title: "Salesforce Org Visualizer & Admin Toolkit",
+    description: "A Chrome extension built to help Salesforce developers and administrators inspect, understand, and manage Salesforce orgs more efficiently.",
+    features: ["Org Inspector", "Profile & Permission Management", "Profile → Permission Set Converter", "Salesforce Org Limits Dashboard", "Schema Visualization", "Inline Editing", "Active / Inactive Filtering", "Production Org Protection / Watermark", "Developer productivity utilities"],
+    technologies: ["Salesforce", "Chrome Extension APIs", "JavaScript", "HTML", "CSS"],
+    link: "https://chromewebstore.google.com/detail/salesforce-org-visualizer/homfepohcmgopoigajcmhjikfdolijlc"
+  },
+  {
+    title: "Salesforce Org Compare & Sync",
+    description: "A Chrome extension designed to make Salesforce org comparison and synchronization workflows easier for developers and administrators.",
+    features: ["Side-by-side org comparison", "Metadata comparison", "Configuration comparison", "Difference highlighting", "Sync assistance", "Salesforce developer productivity features"],
+    technologies: ["Salesforce", "Chrome Extension APIs", "JavaScript", "HTML", "CSS"],
+    link: "https://chromewebstore.google.com/detail/salesforce-org-compare-sy/hhalgjbefldcinchejmlebcfkdplkfkf"
+  }
+];
+---
+<BaseLayout title="Products & Extensions | Imran Pathan">
+  <div class="container section">
+    <div class="page-header">
+      <h1>Products & Extensions</h1>
+      <p class="subtitle">Developer tools I've built for the Salesforce ecosystem.</p>
+    </div>
+    
+    <div class="products-stack">
+      {products.map(product => (
+        <ProductCard {...product} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .section { padding: 2rem 1.5rem; }
+  .page-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; }
+  .subtitle { font-size: 1.25rem; color: var(--text-muted); }
+  .products-stack { display: flex; flex-direction: column; gap: 3rem; }
+</style>

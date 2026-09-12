@@ -1,0 +1,61 @@
+---
+const currentYear = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-info">
+      <p>&copy; {currentYear} Imran Pathan. Built with Astro.</p>
+    </div>
+    
+    <div class="footer-links">
+      <a href="[ADD LINK]" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="[ADD LINK]" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="[ADD LINK]" target="_blank" rel="noopener noreferrer">Chrome Web Store</a>
+      <a href="mailto:[ADD EMAIL]">Email</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    background-color: var(--bg-color);
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .footer-content {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  .footer-info p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .footer-links a {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+  
+  .footer-links a:hover {
+    color: var(--text-color);
+  }
+</style>

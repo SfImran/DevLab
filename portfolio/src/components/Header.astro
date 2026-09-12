@@ -1,0 +1,205 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Salesforce', href: '/salesforce' },
+  { label: 'Architecture', href: '/architecture' },
+  { label: 'Interview Hub', href: '/interview' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'About', href: '/about' },
+];
+---
+<header class="header">
+  <div class="container header-content">
+    <a href="/" class="logo">Imran Pathan</a>
+    
+    <nav class="desktop-nav">
+      {navItems.map(item => (
+        <a href={item.href} class="nav-link">{item.label}</a>
+      ))}
+    </nav>
+    
+    <div class="actions">
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle">
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon hidden"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  
+  <div class="mobile-nav" id="mobile-nav">
+    {navItems.map(item => (
+      <a href={item.href} class="mobile-nav-link">{item.label}</a>
+    ))}
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+  
+  .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .theme-toggle:hover {
+    background-color: var(--card-bg);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
+  
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .mobile-nav.open {
+    display: flex;
+  }
+  
+  .mobile-nav-link {
+    padding: 0.75rem 0;
+    color: var(--text-color);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .mobile-nav-link:last-child {
+    border-bottom: none;
+  }
+</style>
+
+<script>
+  // Theme Toggle Logic
+  const handleToggleClick = () => {
+    const element = document.documentElement;
+    element.setAttribute('data-theme', element.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    
+    const isDark = element.getAttribute('data-theme') === 'dark';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    
+    updateIcons(isDark);
+  }
+  
+  const updateIcons = (isDark: boolean) => {
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    
+    if (sunIcon && moonIcon) {
+      if (isDark) {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      } else {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      }
+    }
+  }
+
+  // Mobile Menu Logic
+  const handleMobileMenuClick = () => {
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileNav) {
+      mobileNav.classList.toggle('open');
+    }
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    
+    if (themeToggle) {
+      themeToggle.addEventListener('click', handleToggleClick);
+    }
+    
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', handleMobileMenuClick);
+    }
+    
+    // Set initial icon state
+    updateIcons(document.documentElement.getAttribute('data-theme') === 'dark');
+  });
+  
+  // For standard loads
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', handleToggleClick);
+  }
+  
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', handleMobileMenuClick);
+  }
+  
+  updateIcons(document.documentElement.getAttribute('data-theme') === 'dark');
+</script>

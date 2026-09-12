@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  description?: string;
+  technologies: string[];
+}
+
+const { title, category, description, technologies } = Astro.props;
+---
+<div class="card project-card">
+  <div class="project-header">
+    <span class="category">{category}</span>
+    <h3>{title}</h3>
+  </div>
+  
+  {description && <p class="description">{description}</p>}
+  
+  <div class="tech-stack">
+    {technologies.map(tech => (
+      <span class="badge">{tech}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+  
+  .tech-stack {
+    margin-top: auto;
+  }
+</style>

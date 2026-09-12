@@ -1,0 +1,315 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+// Content Definitions
+const products = [
+  {
+    title: "Salesforce Org Visualizer & Admin Toolkit",
+    description: "A Chrome extension built to help Salesforce developers and administrators inspect, understand, and manage Salesforce orgs more efficiently.",
+    features: ["Org Inspector", "Profile & Permission Management", "Profile → Permission Set Converter", "Salesforce Org Limits Dashboard", "Schema Visualization", "Inline Editing", "Active / Inactive Filtering", "Production Org Protection / Watermark", "Developer productivity utilities"],
+    technologies: ["Salesforce", "Chrome Extension APIs", "JavaScript", "HTML", "CSS"],
+    link: "https://chromewebstore.google.com/detail/salesforce-org-visualizer/homfepohcmgopoigajcmhjikfdolijlc"
+  },
+  {
+    title: "Salesforce Org Compare & Sync",
+    description: "A Chrome extension designed to make Salesforce org comparison and synchronization workflows easier for developers and administrators.",
+    features: ["Side-by-side org comparison", "Metadata comparison", "Configuration comparison", "Difference highlighting", "Sync assistance", "Salesforce developer productivity features"],
+    technologies: ["Salesforce", "Chrome Extension APIs", "JavaScript", "HTML", "CSS"],
+    link: "https://chromewebstore.google.com/detail/salesforce-org-compare-sy/hhalgjbefldcinchejmlebcfkdplkfkf"
+  }
+];
+
+const projects = [
+  {
+    title: "Salesforce Org Visualizer & Admin Toolkit",
+    category: "Developer Tool",
+    technologies: ["Salesforce", "JavaScript", "Chrome Extensions"]
+  },
+  {
+    title: "Salesforce Org Compare & Sync",
+    category: "Developer Tool",
+    technologies: ["Salesforce", "JavaScript", "Chrome Extensions"]
+  },
+  {
+    title: "Salesforce + Spring Boot Applications",
+    category: "Full-Stack Integration",
+    description: "Full-stack applications integrating Salesforce data with Java/Spring Boot services and cloud data platforms.",
+    technologies: ["Salesforce", "Java", "Spring Boot", "APIs"]
+  },
+  {
+    title: "AI / Developer Productivity Experiments",
+    category: "AI Tools",
+    description: "Experiments with AI-assisted development, MCP, agentic workflows, and developer productivity tools.",
+    technologies: ["AI", "MCP", "Agents", "Salesforce"]
+  }
+];
+
+const learningAreas = [
+  "Salesforce Architecture", "Agentforce", "Data Cloud", "System Design", "Advanced Java / Spring Boot", "Cloud Architecture", "AI Agents", "MCP", "Advanced GitHub / CI/CD"
+];
+---
+
+<BaseLayout title="Imran Pathan | Salesforce Developer & Full-Stack Engineer">
+  <!-- Hero Section -->
+  <section class="hero container">
+    <div class="hero-content">
+      <h1 class="hero-title">Hi, I'm Imran 👋</h1>
+      <h2 class="hero-subtitle">Salesforce Developer · Full-Stack Engineer · Developer Tools Builder</h2>
+      <p class="hero-description">
+        I build Salesforce solutions, integrations, full-stack applications, and developer productivity tools. I also document practical Salesforce engineering, architecture, and interview knowledge for developers.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">Explore My Tools</a>
+        <a href="/salesforce" class="btn btn-outline">Explore Salesforce Resources</a>
+        <a href="[ADD LINK]" class="btn btn-outline" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Profile Stats -->
+  <section class="stats container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-value">5+</span>
+        <span class="stat-label">Years Salesforce Experience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">5</span>
+        <span class="stat-label">Salesforce Certifications</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">3</span>
+        <span class="stat-label">Copado Certifications</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">2</span>
+        <span class="stat-label">Chrome Extensions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products / Extensions -->
+  <section id="products" class="container section">
+    <div class="section-header">
+      <h2>Products & Extensions</h2>
+      <p>Developer tools I've built for the Salesforce ecosystem.</p>
+    </div>
+    <div class="products-stack">
+      {products.map(product => (
+        <ProductCard {...product} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="container section">
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <p>A selection of my technical work and integrations.</p>
+    </div>
+    <div class="projects-grid">
+      {projects.map(project => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+    <div class="section-footer">
+      <a href="/projects" class="btn btn-outline">View All Projects</a>
+    </div>
+  </section>
+
+  <!-- Learning & Certifications -->
+  <section class="container section two-columns">
+    <div class="column">
+      <h2>Currently Exploring</h2>
+      <ul class="learning-list">
+        {learningAreas.map(area => (
+          <li>{area}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="column">
+      <h2>Certifications</h2>
+      <div class="cert-group">
+        <h3>Salesforce Certifications</h3>
+        <p class="cert-count">5 Certifications</p>
+        <ul class="cert-list">
+          <li>[ADD CERTIFICATION NAME]</li>
+          <li>[ADD CERTIFICATION NAME]</li>
+        </ul>
+      </div>
+      <div class="cert-group mt-4">
+        <h3>Copado Certifications</h3>
+        <p class="cert-count">3 Certifications</p>
+        <ul class="cert-list">
+          <li>[ADD CERTIFICATION NAME]</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 4rem 1.5rem;
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--accent-color), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1.5rem;
+  }
+  
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .stats {
+    padding-bottom: 4rem;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .stat-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  
+  .section {
+    padding: 4rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .section-header {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .section-header p {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+  }
+  
+  .products-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .section-footer {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  @media (min-width: 768px) {
+    .two-columns {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .learning-list {
+    list-style-position: inside;
+    color: var(--text-muted);
+  }
+  
+  .learning-list li {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+  }
+  
+  .cert-group h3 {
+    margin-bottom: 0.25rem;
+  }
+  
+  .cert-count {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .cert-list {
+    list-style-position: inside;
+    color: var(--text-muted);
+  }
+  
+  .cert-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mt-4 {
+    margin-top: 2rem;
+  }
+</style>

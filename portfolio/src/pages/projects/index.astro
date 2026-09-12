@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: "Salesforce Org Visualizer & Admin Toolkit",
+    category: "Developer Tool",
+    technologies: ["Salesforce", "JavaScript", "Chrome Extensions"]
+  },
+  {
+    title: "Salesforce Org Compare & Sync",
+    category: "Developer Tool",
+    technologies: ["Salesforce", "JavaScript", "Chrome Extensions"]
+  },
+  {
+    title: "Salesforce + Spring Boot Applications",
+    category: "Full-Stack Integration",
+    description: "Full-stack applications integrating Salesforce data with Java/Spring Boot services and cloud data platforms.",
+    technologies: ["Salesforce", "Java", "Spring Boot", "APIs"]
+  },
+  {
+    title: "AI / Developer Productivity Experiments",
+    category: "AI Tools",
+    description: "Experiments with AI-assisted development, MCP, agentic workflows, and developer productivity tools.",
+    technologies: ["AI", "MCP", "Agents", "Salesforce"]
+  }
+];
+---
+<BaseLayout title="Projects | Imran Pathan">
+  <div class="container section">
+    <div class="page-header">
+      <h1>Projects</h1>
+      <p class="subtitle">A selection of my technical work, integrations, and experiments.</p>
+    </div>
+    
+    <div class="projects-grid">
+      {projects.map(project => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .section { padding: 2rem 1.5rem; }
+  .page-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; }
+  .subtitle { font-size: 1.25rem; color: var(--text-muted); }
+  .projects-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  @media (min-width: 768px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

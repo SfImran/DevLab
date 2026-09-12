@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skillGroups = [
+  {
+    title: "Salesforce",
+    skills: ["Apex", "Lightning Web Components", "SOQL", "SOSL", "Salesforce Flows", "Salesforce APIs", "REST API", "SOAP API", "Metadata API", "Tooling API", "Salesforce Security", "Salesforce Automation", "Salesforce Integration", "Salesforce Development"]
+  },
+  {
+    title: "Backend",
+    skills: ["Java", "Spring Boot", "REST APIs", "API Design", "Caching", "Database Integration"]
+  },
+  {
+    title: "Cloud & Data",
+    skills: ["Google Cloud Platform", "BigQuery", "Cloud Integration", "Data Processing"]
+  },
+  {
+    title: "DevOps",
+    skills: ["Git", "GitHub", "CI/CD", "Copado", "GitHub Actions"]
+  },
+  {
+    title: "AI & Developer Tools",
+    skills: ["GitHub Copilot", "Agentforce", "Generative AI", "AI Agents", "MCP", "Chrome Extension Development", "AI-assisted development"]
+  }
+];
+---
+<BaseLayout title="Skills | Imran Pathan">
+  <div class="container section">
+    <div class="skills-header">
+      <h1>Technical Skills</h1>
+      <p class="subtitle">Technologies and tools I work with</p>
+    </div>
+    
+    <div class="skills-grid">
+      {skillGroups.map(group => (
+        <div class="skill-card">
+          <h2>{group.title}</h2>
+          <div class="skill-tags">
+            {group.skills.map(skill => (
+              <span class="badge">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .skills-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .skill-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  
+  .skill-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+  }
+  
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>
