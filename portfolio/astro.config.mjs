@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://imranpathan.github.io',
-  base: '/portfolio',
+  site: 'https://SfImran.github.io',
+  base: '/DevLab',
   integrations: [mdx(), sitemap()]
 });
