@@ -187,3 +187,11 @@ pre code {
 .markdown-body li {
   margin-bottom: 0.5rem;
 }
+
+/* Disabled States */
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+  text-decoration: none !important;
+}
