@@ -2,13 +2,6 @@
 const currentPath = Astro.url.pathname;
 const base = import.meta.env.BASE_URL;
 
-const navItems = [
-  { label: 'Home', href: base },
-  { label: 'Projects', href: `${base}projects` },
-  { label: 'Developer Tools', href: `${base}products` },
-  { label: 'About', href: `${base}about` },
-];
-
 function isActive(href: string): boolean {
   const normalizedPath = currentPath.replace(/\/$/, '') || '/';
   const normalizedHref = href.replace(/\/$/, '') || '/';
@@ -21,12 +14,6 @@ function isActive(href: string): boolean {
       <span class="logo-text">Imran Pathan</span>
       <span class="logo-badge">DevLab</span>
     </a>
-    
-    <nav class="desktop-nav" aria-label="Main navigation">
-      {navItems.map(item => (
-        <a href={item.href} class:list={["nav-link", { active: isActive(item.href) }]}>{item.label}</a>
-      ))}
-    </nav>
     
     <div class="actions">
       <a href="https://github.com/SfImran" class="header-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -45,10 +32,6 @@ function isActive(href: string): boolean {
   </div>
   
   <div class="mobile-nav" id="mobile-nav">
-    {navItems.map(item => (
-      <a href={item.href} class:list={["mobile-nav-link", { active: isActive(item.href) }]}>{item.label}</a>
-    ))}
-    <div class="mobile-nav-divider"></div>
     <a href="https://github.com/SfImran" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     <a href="mailto:imran.salesfore.dev@gmail.com" class="mobile-nav-link">Contact</a>
   </div>
