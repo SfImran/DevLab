@@ -63,6 +63,12 @@ const projects = [
     technologies: ["Salesforce", "Java", "Spring Boot", "APIs"]
   },
   {
+    title: "Mera Business",
+    category: "In Development",
+    description: "An offline-first business management SaaS designed for small businesses, with business-specific workflows for inventory, sales, expenses, customers and operations.",
+    technologies: ["Flutter", "SQLite", "PostgreSQL", "REST APIs"]
+  },
+  {
     title: "AI / Developer Productivity Experiments",
     category: "AI Tools",
     description: "Experiments with AI-assisted development, MCP, agentic workflows, and developer productivity tools.",
@@ -71,7 +77,7 @@ const projects = [
 ];
 
 const learningAreas = [
-  "Salesforce Architecture", "Agentforce", "Data Cloud", "System Design", "Advanced Java / Spring Boot", "Cloud Architecture", "AI Agents", "MCP", "Advanced GitHub / CI/CD"
+  "Salesforce Architecture", "Agentforce", "Data Cloud", "Spring Boot", "AI Agents", "MCP", "Developer Productivity Tools", "Cloud Architecture"
 ];
 ---
 
@@ -79,15 +85,17 @@ const learningAreas = [
   <!-- Hero Section -->
   <section class="hero container">
     <div class="hero-content">
-      <h1 class="hero-title">Hi, I'm Imran 👋</h1>
+      <h1 class="hero-title">Imran Pathan</h1>
       <h2 class="hero-subtitle">Salesforce Developer · Full-Stack Engineer · Developer Tools Builder</h2>
       <p class="hero-description">
-        I build Salesforce solutions, integrations, full-stack applications, and developer productivity tools. I also document practical Salesforce engineering, architecture, and interview knowledge for developers.
+        I build Salesforce solutions, full-stack applications, integrations, and developer productivity tools.
+        <br/><br/>
+        <strong>DevLab</strong> — Projects, developer tools, experiments and technical work by Imran Pathan.
       </p>
       <div class="hero-actions">
-        <a href="#products" class="btn btn-primary">Explore My Tools</a>
-        <!-- <a href="/salesforce" class="btn btn-outline">Explore Salesforce Resources</a> -->
-        <a href="#" class="btn btn-outline disabled" aria-disabled="true" target="_blank">GitHub</a>
+        <a href={`${import.meta.env.BASE_URL}projects`} class="btn btn-primary">Explore Projects</a>
+        <a href="https://github.com/SfImran" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:imran.salesfore.dev@gmail.com" class="btn btn-outline">Contact</a>
       </div>
     </div>
   </section>
@@ -138,15 +146,15 @@ const learningAreas = [
         <ProjectCard {...project} />
       ))}
     </div>
-    <!-- <div class="section-footer">
-      <a href="/projects" class="btn btn-outline">View All Projects</a>
-    </div> -->
+    <div class="section-footer">
+      <a href={`${import.meta.env.BASE_URL}projects`} class="btn btn-outline">View All Projects</a>
+    </div>
   </section>
 
   <!-- Learning & Certifications -->
   <section class="container section two-columns">
     <div class="column">
-      <h2>Currently Exploring</h2>
+      <h2>Currently Building & Exploring</h2>
       <ul class="learning-list">
         {learningAreas.map(area => (
           <li>{area}</li>
