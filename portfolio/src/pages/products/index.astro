@@ -19,14 +19,15 @@ const products = [
   }
 ];
 ---
-<BaseLayout title="Products & Extensions | Imran Pathan">
+<BaseLayout title="Developer Tools | Imran Pathan">
   <div class="container section">
-    <div class="page-header">
-      <h1>Products & Extensions</h1>
-      <p class="subtitle">Developer tools I've built for the Salesforce ecosystem.</p>
+    <div class="page-header fade-in">
+      <span class="section-label">Products</span>
+      <h1>Developer Tools</h1>
+      <p class="subtitle">Chrome extensions and developer tools I've built for the Salesforce ecosystem.</p>
     </div>
     
-    <div class="products-stack">
+    <div class="products-stack fade-in">
       {products.map(product => (
         <ProductCard {...product} />
       ))}
@@ -35,8 +36,43 @@ const products = [
 </BaseLayout>
 
 <style>
-  .section { padding: 2rem 1.5rem; }
-  .page-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; }
-  .subtitle { font-size: 1.25rem; color: var(--text-muted); }
-  .products-stack { display: flex; flex-direction: column; gap: 3rem; }
+  .section { 
+    padding: 4rem 1.5rem; 
+    max-width: 1000px;
+  }
+  
+  .page-header { 
+    margin-bottom: 3.5rem; 
+    text-align: center;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary-color);
+    background-color: var(--primary-lighter);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--badge-border);
+    margin-bottom: 0.875rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle { 
+    font-size: 1.15rem; 
+    color: var(--text-muted); 
+  }
+  
+  .products-stack { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 3.5rem; 
+  }
 </style>

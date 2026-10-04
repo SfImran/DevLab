@@ -1,15 +1,33 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 ---
 <footer class="footer">
-  <div class="container footer-content">
-    <div class="footer-info">
-      <p>&copy; {currentYear} Imran Pathan. Built with Astro.</p>
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-name">Imran Pathan</span>
+        <p class="footer-tagline">Salesforce Developer · Full-Stack Engineer · Developer Tools Builder</p>
+      </div>
+      
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href={base}>Home</a>
+          <a href={`${base}projects`}>Projects</a>
+          <a href={`${base}products`}>Developer Tools</a>
+          <a href={`${base}about`}>About</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://github.com/SfImran" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:imran.salesfore.dev@gmail.com">Email</a>
+        </div>
+      </div>
     </div>
-    
-    <div class="footer-links">
-      <a href="https://github.com/SfImran" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="mailto:imran.salesfore.dev@gmail.com">Email</a>
+
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Imran Pathan. Built with Astro.</p>
     </div>
   </div>
 </footer>
@@ -17,43 +35,80 @@ const currentYear = new Date().getFullYear();
 <style>
   .footer {
     border-top: 1px solid var(--border-color);
-    padding: 2rem 0;
-    margin-top: 4rem;
-    background-color: var(--bg-color);
+    margin-top: 0;
+    background-color: var(--bg-secondary);
   }
-  
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+
+  .footer-inner {
+    padding: 3rem 1.5rem 1.5rem;
   }
-  
-  @media (min-width: 768px) {
-    .footer-content {
-      flex-direction: row;
-      justify-content: space-between;
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .footer-top {
+      grid-template-columns: 1.5fr 1fr;
     }
   }
-  
-  .footer-info p {
-    color: var(--text-muted);
-    font-size: 0.875rem;
-  }
-  
-  .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-  }
-  
-  .footer-links a {
-    color: var(--text-muted);
-    font-size: 0.875rem;
-  }
-  
-  .footer-links a:hover {
+
+  .footer-name {
+    font-weight: 700;
+    font-size: 1.125rem;
     color: var(--text-color);
+    display: block;
+    margin-bottom: 0.375rem;
+  }
+
+  .footer-tagline {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-col h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-col a {
+    color: var(--text-subtle);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-col a:hover {
+    color: var(--primary-color);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+  }
+
+  .footer-bottom p {
+    color: var(--text-subtle);
+    font-size: 0.8rem;
+    text-align: center;
   }
 </style>
