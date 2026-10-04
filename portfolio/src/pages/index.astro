@@ -23,14 +23,28 @@ const products = [
 
 const projects = [
   {
-    title: "Property Management by Salesforce",
-    category: "Project",
+    title: "Property Management Application",
+    category: "Salesforce Application",
+    description: "An application to manage rental properties, leases, and maintenance requests. Designed data models, created Lightning Web Components, and implemented Apex classes.",
+    technologies: ["Salesforce", "LWC", "Apex"]
+  },
+  {
+    title: "Product for AppExchange",
+    category: "AppExchange Development",
+    description: "A product for AppExchange by building custom objects, flows, and Apex classes. Created managed packages for seamless deployment.",
+    technologies: ["Salesforce", "AppExchange", "Apex", "Flows"]
+  },
+  {
+    title: "Event Management System",
+    category: "Salesforce Application",
+    description: "Designed and developed an Event Management System to streamline the organization of conferences.",
     technologies: ["Salesforce"]
   },
   {
-    title: "Salesforce AppExchange Product Development",
-    category: "Product Development",
-    technologies: ["Salesforce", "AppExchange"]
+    title: "Invoice Application",
+    category: "Salesforce Application",
+    description: "Custom Invoice Management App tailored to the client's business.",
+    technologies: ["Salesforce"]
   },
   {
     title: "Salesforce Org Visualizer & Admin Toolkit",
@@ -72,7 +86,7 @@ const learningAreas = [
       </p>
       <div class="hero-actions">
         <a href="#products" class="btn btn-primary">Explore My Tools</a>
-        <a href="/salesforce" class="btn btn-outline">Explore Salesforce Resources</a>
+        <!-- <a href="/salesforce" class="btn btn-outline">Explore Salesforce Resources</a> -->
         <a href="#" class="btn btn-outline disabled" aria-disabled="true" target="_blank">GitHub</a>
       </div>
     </div>
@@ -124,9 +138,9 @@ const learningAreas = [
         <ProjectCard {...project} />
       ))}
     </div>
-    <div class="section-footer">
+    <!-- <div class="section-footer">
       <a href="/projects" class="btn btn-outline">View All Projects</a>
-    </div>
+    </div> -->
   </section>
 
   <!-- Learning & Certifications -->
@@ -156,7 +170,9 @@ const learningAreas = [
         <h3>Copado Certifications</h3>
         <p class="cert-count">3 Certifications</p>
         <ul class="cert-list">
-          <li>[ADD CERTIFICATION NAME]</li>
+          <li>Copado AI</li>
+          <li>Copado Fundamentals I SFP</li>
+          <li>Copado Fundamentals I MP</li>
         </ul>
       </div>
     </div>
