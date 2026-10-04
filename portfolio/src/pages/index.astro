@@ -47,16 +47,6 @@ const projects = [
     technologies: ["Salesforce"]
   },
   {
-    title: "Salesforce Org Visualizer & Admin Toolkit",
-    category: "Developer Tool",
-    technologies: ["Salesforce", "JavaScript", "Chrome Extensions"]
-  },
-  {
-    title: "Salesforce Org Compare & Sync",
-    category: "Developer Tool",
-    technologies: ["Salesforce", "JavaScript", "Chrome Extensions"]
-  },
-  {
     title: "Salesforce + Spring Boot Applications",
     category: "Full-Stack Integration",
     description: "Full-stack applications integrating Salesforce data with Java/Spring Boot services and cloud data platforms.",
@@ -189,18 +179,39 @@ const learningAreas = [
 
 <style>
   .hero {
-    padding: 4rem 1.5rem;
+    padding: 6rem 1.5rem;
     display: flex;
     align-items: center;
-    min-height: 60vh;
+    min-height: 70vh;
+    position: relative;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle at top right, var(--primary-light), transparent 40%),
+                radial-gradient(circle at bottom left, var(--accent-light), transparent 40%);
+    opacity: 0.6;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
   }
   
   .hero-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(90deg, var(--accent-color), #8b5cf6);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -0.03em;
   }
   
   .hero-subtitle {
@@ -211,13 +222,17 @@ const learningAreas = [
   }
   
   .hero-description {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--text-muted);
     max-width: 800px;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    border-left: 4px solid var(--accent-color);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    border-left: 4px solid var(--primary-color);
     padding-left: 1.5rem;
+    background: linear-gradient(90deg, var(--primary-light), transparent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
   
   .hero-actions {
@@ -227,13 +242,13 @@ const learningAreas = [
   }
   
   .stats {
-    padding-bottom: 4rem;
+    padding-bottom: 5rem;
   }
   
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   @media (min-width: 768px) {
@@ -245,41 +260,77 @@ const learningAreas = [
   .stat-item {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  
+  .stat-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
   }
   
   .stat-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--accent-color);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-color);
     line-height: 1;
     margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   .stat-label {
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   
   .section {
-    padding: 4rem 1.5rem;
+    padding: 5rem 1.5rem;
     border-top: 1px solid var(--border-color);
+    position: relative;
+  }
+  
+  .section:nth-child(even) {
+    background-color: var(--bg-secondary);
   }
   
   .section-header {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     text-align: center;
+    position: relative;
+  }
+  
+  .section-header h2 {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
   }
   
   .section-header p {
     color: var(--text-muted);
-    font-size: 1.125rem;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
   }
   
   .products-stack {
@@ -291,7 +342,7 @@ const learningAreas = [
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   
   @media (min-width: 768px) {
@@ -301,14 +352,14 @@ const learningAreas = [
   }
   
   .section-footer {
-    margin-top: 3rem;
+    margin-top: 4rem;
     text-align: center;
   }
   
   .two-columns {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 4rem;
   }
   
   @media (min-width: 768px) {

@@ -9,8 +9,12 @@ interface Props {
 const { title, category, description, technologies } = Astro.props;
 ---
 <div class="card project-card">
+  <div class="card-accent"></div>
   <div class="project-header">
-    <span class="category">{category}</span>
+    <span class="category">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      {category}
+    </span>
     <h3>{title}</h3>
   </div>
   
@@ -28,20 +32,44 @@ const { title, category, description, technologies } = Astro.props;
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+  
+  .project-card:hover .card-accent {
+    opacity: 1;
   }
   
   .category {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--accent-color);
+    color: var(--primary-color);
     font-weight: 700;
-    margin-bottom: 0.5rem;
-    display: block;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  
+  .category-icon {
+    color: var(--accent-color);
   }
   
   h3 {
     margin-bottom: 1rem;
+    font-size: 1.35rem;
   }
   
   .description {
